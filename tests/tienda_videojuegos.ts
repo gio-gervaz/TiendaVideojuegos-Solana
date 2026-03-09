@@ -1,7 +1,9 @@
 import * as anchor from "@coral-xyz/anchor";
 
 describe("tienda-videojuegos", () => {
+
   it("Test inicial", async () => {
-    console.log("Proyecto tienda de videojuegos funcionando");
+    console.log("Contrato de tienda de videojuegos funcionando");
   });
+
 });
