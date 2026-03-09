@@ -12,10 +12,20 @@ pub mod tienda_videojuegos {
         Ok(())
     }
 
-    pub fn agregar_juego(ctx: Context<AgregarJuego>, nombre: String, precio: u64) -> Result<()> {
+    pub fn agregar_juego(
+        ctx: Context<AgregarJuego>,
+        nombre: String,
+        precio: u64,
+    ) -> Result<()> {
+
         let juego = &mut ctx.accounts.juego;
         juego.nombre = nombre;
         juego.precio = precio;
+
+        Ok(())
+    }
+
+    pub fn eliminar_juego(ctx: Context<EliminarJuego>) -> Result<()> {
         Ok(())
     }
 }
@@ -51,4 +61,10 @@ pub struct AgregarJuego<'info> {
     pub user: Signer<'info>,
 
     pub system_program: Program<'info, System>,
+}
+
+#[derive(Accounts)]
+pub struct EliminarJuego<'info> {
+    #[account(mut)]
+    pub juego: Account<'info, Juego>,
 }
